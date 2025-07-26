@@ -1,2 +1,1 @@
-/comparativo/
-  └── index.html
+/comparativo/index.html
