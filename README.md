@@ -14,6 +14,8 @@
             --accent-color: #e74c3c;
             --light-color: #ecf0f1;
             --dark-color: #34495e;
+            --text-color: #333;
+            --spacing: 1rem;
         }
 
         * {
@@ -25,32 +27,38 @@
 
         body {
             background-color: var(--light-color);
-            color: var(--dark-color);
+            color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            font-size: 16px;
         }
 
         header {
             background-color: var(--primary-color);
             color: white;
-            padding: 1rem;
+            padding: var(--spacing);
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 100%;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
         }
 
         .container {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            margin: var(--spacing) auto;
+            padding: 0 var(--spacing);
             flex: 1;
             width: 100%;
-        }
-
-        h1, h2, h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
         }
 
         .dashboard-header {
@@ -58,25 +66,27 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: var(--spacing);
+            margin-bottom: var(--spacing);
         }
 
         .period-selector {
             font-weight: bold;
+            font-size: 1rem;
             white-space: nowrap;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 2rem;
+            margin-bottom: var(--spacing);
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             background-color: white;
+            font-size: 0.95rem;
         }
 
         th, td {
-            padding: 12px 15px;
+            padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
@@ -87,19 +97,20 @@
             position: sticky;
             top: 0;
             z-index: 1;
+            font-size: 1rem;
         }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #f8f9fa;
         }
 
         tr:hover {
-            background-color: #e3e3e3;
+            background-color: #f1f3f5;
         }
 
         .positive { color: #27ae60; font-weight: bold; }
         .negative { color: #e74c3c; font-weight: bold; }
-        .neutral  { color: #7f8c8d; }
+        .neutral { color: #7f8c8d; }
 
         .performance-indicator {
             display: inline-block;
@@ -122,6 +133,9 @@
             transition: background-color 0.3s;
             font-size: 0.9rem;
             white-space: nowrap;
+            text-align: center;
+            width: 100%;
+            max-width: 120px;
         }
 
         .view-chart-btn:hover {
@@ -145,7 +159,7 @@
         .modal-content {
             background-color: white;
             border-radius: 8px;
-            padding: 2rem;
+            padding: var(--spacing);
             max-width: 700px;
             width: 90%;
             max-height: 80vh;
@@ -174,7 +188,7 @@
         .chart-wrapper {
             width: 100%;
             max-width: 600px;
-            margin: 2rem auto;
+            margin: var(--spacing) auto;
             position: relative;
             height: 400px;
         }
@@ -183,34 +197,34 @@
             background-color: var(--primary-color);
             color: white;
             text-align: center;
-            padding: 1rem;
+            padding: var(--spacing);
             margin-top: auto;
         }
 
         @media (max-width: 768px) {
             .container {
                 padding: 0 0.5rem;
-                margin: 1rem auto;
+                margin: 0.5rem auto;
             }
             
             header {
                 padding: 0.8rem;
             }
             
-            h1 {
+            header h1 {
                 font-size: 1.5rem;
             }
             
-            h2 {
-                font-size: 1.3rem;
-            }
-            
-            table {
+            header p {
                 font-size: 0.9rem;
             }
             
+            table {
+                font-size: 0.85rem;
+            }
+            
             th, td {
-                padding: 8px 10px;
+                padding: 8px;
             }
             
             .chart-wrapper {
@@ -222,9 +236,14 @@
                 font-size: 0.9rem;
             }
 
+            .view-chart-btn {
+                max-width: 100px;
+                font-size: 0.85rem;
+            }
+
             .modal-content {
                 width: 95%;
-                padding: 1rem;
+                padding: 0.75rem;
             }
         }
 
@@ -243,33 +262,51 @@
             }
 
             tr {
-                margin-bottom: 1rem;
+                margin-bottom: 0.5rem;
                 border: 1px solid #ccc;
                 border-radius: 6px;
-                padding: 10px;
+                padding: 0.5rem;
             }
 
             td {
                 display: flex;
                 justify-content: space-between;
-                padding: 8px;
+                padding: 6px;
                 border-bottom: 1px solid #eee;
+                font-size: 0.8rem;
             }
             
             td::before {
                 content: attr(data-label);
                 font-weight: bold;
-                margin-right: 1rem;
-                flex: 0 0 40%;
+                margin-right: 0.5rem;
+                flex: 0 0 45%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             
             .chart-wrapper {
                 height: 250px;
             }
 
+            .view-chart-btn {
+                max-width: 90px;
+                font-size: 0.8rem;
+                padding: 4px 8px;
+            }
+
             .modal-content {
                 width: 95%;
-                padding: 1rem;
+                padding: 0.5rem;
+            }
+
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            header p {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -376,33 +413,21 @@
                 tableBody.appendChild(row);
             });
 
-            // Variável para armazenar o gráfico atual
             let currentChart = null;
-            
-            // Referências ao modal
             const modal = document.getElementById('chart-modal');
             const modalClose = document.getElementById('modal-close');
             
-            // Adicionar eventos aos botões de visualização de gráfico
             document.querySelectorAll('.view-chart-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
                     const total2024 = parseInt(this.getAttribute('data-2024'));
                     const total2025 = parseInt(this.getAttribute('data-2025'));
                     
-                    // Mostrar o modal
                     modal.style.display = 'flex';
-                    
-                    // Atualizar o título do gráfico
                     document.getElementById('chart-title').textContent = category;
                     
-                    // Criar ou atualizar o gráfico de pizza
                     const ctx = document.getElementById('pie-chart').getContext('2d');
-                    
-                    // Destruir o gráfico anterior se existir
-                    if (currentChart) {
-                        currentChart.destroy();
-                    }
+                    if (currentChart) currentChart.destroy();
                     
                     currentChart = new Chart(ctx, {
                         type: 'pie',
@@ -418,9 +443,7 @@
                             responsive: true,
                             maintainAspectRatio: false,
                             plugins: {
-                                legend: {
-                                    position: 'top',
-                                },
+                                legend: { position: 'top' },
                                 tooltip: {
                                     callbacks: {
                                         label: function(context) {
@@ -438,7 +461,6 @@
                 });
             });
             
-            // Fechar o modal
             modalClose.addEventListener('click', function() {
                 modal.style.display = 'none';
                 if (currentChart) {
@@ -447,7 +469,6 @@
                 }
             });
 
-            // Fechar o modal clicando fora
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.style.display = 'none';
